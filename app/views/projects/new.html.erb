@@ -1,10 +1,24 @@
-<p id="error"><%= alert %></p>
-
-<%= form_with model: @project, url: projects_created_path, method: :get, local: true do |form| %> 
-    <%= form.text_field :name %>
-    <%= form.text_area :description %>
-    <%= form.date_field :start_date %>
-    <%= form.date_field :end_date %>
-    <%= form.text_field :state %>
-    <%= form.submit "Create" %>
+<% if alert != nil%>
+    <div class="alert alert-danger mt-2" role="alert">
+        <h4 class="alert-heading">Ups!</h4>
+        <hr>
+        <p id="alert"><%= alert %></p>
+    </div>
 <% end %>
+
+
+<%= form_with model: @project, url: projects_created_path, method: :get, local: true, :class => 'form-group form-group-sm' do |form| %> 
+    <%= form.label :name, class: "mt-2" %>
+    <%= form.text_field :name, class: "form-control me-2", :required => true %>
+    <%= form.label :description, class: "mt-2" %>
+    <%= form.text_area :description, class: "form-control me-2", :required => true %>
+    <%= form.label :start_date, class: "mt-2" %>
+    <%= form.date_field :start_date, class: "form-control me-2" %>
+    <%= form.label :end_date, class: "mt-2" %>
+    <%= form.date_field :end_date, class: "form-control me-2" %>
+    <%= form.label :state, class: "mt-2" %>
+    <%= form.text_field :state, class: "form-control me-2", :required => true %>
+    <%= form.submit "Create", class: "btn btn-primary mt-2" %>
+<% end %>
+
+

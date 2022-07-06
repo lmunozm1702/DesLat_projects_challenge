@@ -1,11 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<%= form_tag projects_all_path, method: :get do %>
-<%= text_field_tag :filter_state, params[:filter_state], class: "form-control", placeholder: "State" %>
-<%= submit_tag "Filter", name: nil, class: "btn btn-primary btn-md" %>
+<% if notice != nil%>
+<div class="alert alert-success mt-2" role="alert">
+    <h4 class="alert-heading">Well done!</h4>
+    <hr>
+    <p id="notice"><%= notice %></p>
+</div>
 <% end %>
 
-<table>
+<%= form_tag projects_all_path, method: :get, :class => 'd-flex  float-end' do %>
+<%= text_field_tag :filter_state, params[:filter_state], class: "me-2 my-2 input-meduim", placeholder: "State" %>
+<%= submit_tag "Filter", name: nil, class: "btn btn-primary btn-md my-2" %>
+<% end %>
+
+<table class="table mt-2">
+    <thead>
+        <tr class="table-primary">
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>State</th>
+        </tr>
+    </thead>
+
     <% @projects.each do |project| %>
         <tr>
             <td><%= project.name%></td>
@@ -13,7 +29,7 @@
             <td><%= project.start_date%></td>
             <td><%= project.end_date%></td>
             <td><%= project.state%></td>
-            <td><%= project.created_at.strftime("%d-%m-%Y %H:%M")%></td>
+            <!---td><%#= project.created_at.strftime("%d-%m-%Y %H:%M")%></td-->
         </tr>
     <% end %>
 </table>

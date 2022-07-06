@@ -17,11 +17,11 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to projects_all_path , notice: 'The project was successfully created'
     else
-      full_errors = "<br>"
+      full_errors = ""
       @project.errors.full_messages.each do |msg|
-        full_errors += msg + "<br>"
+        full_errors += msg + ". "
       end
-      redirect_to projects_new_path , alert: 'We couldnt create the project, please try again.' + full_errors
+      redirect_to projects_new_path , alert: 'We couldnt create the project, please try again. Try to fix: ' + full_errors
     end
   end
   

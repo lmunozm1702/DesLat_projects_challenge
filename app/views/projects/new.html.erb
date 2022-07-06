@@ -1,2 +1,10 @@
-<h1>Projects#new</h1>
-<p>Find me in app/views/projects/new.html.erb</p>
+<p id="error"><%= alert %></p>
+
+<%= form_with model: @project, url: projects_created_path, method: :get, local: true do |form| %> 
+    <%= form.text_field :name %>
+    <%= form.text_area :description %>
+    <%= form.date_field :start_date %>
+    <%= form.date_field :end_date %>
+    <%= form.text_field :state %>
+    <%= form.submit "Create" %>
+<% end %>

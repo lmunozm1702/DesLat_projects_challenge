@@ -1,2 +1,14 @@
-<h1>Projects#all</h1>
-<p>Find me in app/views/projects/all.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<table>
+    <% @projects.each do |project| %>
+        <tr>
+            <td><%= project.name%></td>
+            <td><%= project.description%></td>
+            <td><%= project.start_date%></td>
+            <td><%= project.end_date%></td>
+            <td><%= project.state%></td>
+            <td><%= project.created_at.strftime("%d-%m-%Y %H:%M")%></td>
+        </tr>
+    <% end %>
+</table>

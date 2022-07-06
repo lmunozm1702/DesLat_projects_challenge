@@ -17,10 +17,14 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to projects_all_path , notice: 'The project was successfully created'
     else
-      redirect_to projects_new_path , alert: 'We couldnt create the project, please try again.'
+      full_errors = "<br>"
+      @project.errors.full_messages.each do |msg|
+        full_errors += msg + "<br>"
+      end
+      redirect_to projects_new_path , alert: 'We couldnt create the project, please try again.' + full_errors
     end
   end
-
+  
   private
   def project_params
     params.require(:project).permit(:name, :description, :start_date, :end_date, :state )

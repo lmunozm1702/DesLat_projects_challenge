@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<%= form_tag projects_all_path, method: :get do %>
+<%= text_field_tag :filter_state, params[:filter_state], class: "form-control", placeholder: "State" %>
+<%= submit_tag "Filter", name: nil, class: "btn btn-primary btn-md" %>
+<% end %>
+
 <table>
     <% @projects.each do |project| %>
         <tr>

@@ -12,6 +12,18 @@
 
   <body>
     <div class="container">
+
+      <ul class="nav justify-content-end navbar-light bg-light">
+        <li class="nav-item">
+          <%= link_to "New project", projects_new_path, class: "nav-link" %>          
+        </li>
+        <li class="nav-item">
+          <%= link_to "All projects", projects_new_path, class: "nav-link" %>          
+        </li>
+      </ul>
+
+
+
       <%= yield %>
     </div>
   </body>

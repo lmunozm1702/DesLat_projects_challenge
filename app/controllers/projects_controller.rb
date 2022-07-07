@@ -2,8 +2,8 @@ class ProjectsController < ApplicationController
   def all
     @projects = Project.all.order(created_at: :desc)
 
-    if params[:filter_state].present?
-      @projects = Project.where("state = ?", params[:filter_state])
+    if params[:state].present?
+      @projects = Project.where("state = ?", params[:state])
     end
   end
 

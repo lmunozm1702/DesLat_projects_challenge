@@ -7,17 +7,23 @@
 <% end %>
 
 
-<%= form_with model: @project, url: projects_created_path, method: :get, local: true, :class => 'form-group form-group-sm' do |form| %> 
+<%= form_with model: @project, url: projects_created_path, method: :get, local: true do |form| %> 
+    
     <%= form.label :name, class: "mt-2" %>
     <%= form.text_field :name, class: "form-control me-2", :required => true %>
+    
     <%= form.label :description, class: "mt-2" %>
     <%= form.text_area :description, class: "form-control me-2", :required => true %>
+    
     <%= form.label :start_date, class: "mt-2" %>
     <%= form.date_field :start_date, class: "form-control me-2" %>
+    
     <%= form.label :end_date, class: "mt-2" %>
     <%= form.date_field :end_date, class: "form-control me-2" %>
+    
     <%= form.label :state, class: "mt-2" %>
-    <%= form.text_field :state, class: "form-control me-2", :required => true %>
+    <%= form.select :state, ["Proposal", "On going", "Finished"], {}, {class: "form-control form-select"} %>
+    
     <%= form.submit "Create", class: "btn btn-primary mt-2" %>
 <% end %>
 
